@@ -29,6 +29,14 @@ const routes: Routes = [
     path: 'leerqr',
     loadChildren: () => import('./pages/leerqr/leerqr.module').then( m => m.LeerqrPageModule)
   },
+  {
+    path: 'docente',
+    loadChildren: () => import('./pages/docente/docente.module').then( m => m.DocentePageModule)
+  },
+  {
+    path: 'asignaturas',
+    loadChildren: () => import('./pages/asignaturas/asignaturas.module').then( m => m.AsignaturasPageModule)
+  },
   
 ];
 

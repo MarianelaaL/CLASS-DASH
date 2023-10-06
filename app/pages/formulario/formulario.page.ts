@@ -26,6 +26,10 @@ export class FormularioPage implements OnInit {
     this.menuController.open('first');
   }
 
+  goBack() {
+    this.navCtrl.navigateBack(['/']);
+  }
+
 
   async Enviar() {
     const alert = await this.alertController.create({

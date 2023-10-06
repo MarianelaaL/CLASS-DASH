@@ -10,18 +10,16 @@ import { NavController } from '@ionic/angular';
 export class InicioPage implements OnInit {
  
 
-
   constructor(private menuController: MenuController, private readonly navCtrl: NavController) { }
 
   ngOnInit() {
   }
-  profesor(){
-    this.navCtrl.navigateForward(['/profesor'])
+  docente(){
+    this.navCtrl.navigateForward(['/docente'])
   }
   alumno(){
     this.navCtrl.navigateForward(['/alumno'])
   }
-
   mostrarMenu(){
     this.menuController.open('first');
   }
