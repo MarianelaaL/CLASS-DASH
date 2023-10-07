@@ -37,6 +37,10 @@ const routes: Routes = [
     path: 'asignaturas',
     loadChildren: () => import('./pages/asignaturas/asignaturas.module').then( m => m.AsignaturasPageModule)
   },
+  {
+    path: 'docente-asignaturas',
+    loadChildren: () => import('./pages/docente-asignaturas/docente-asignaturas.module').then( m => m.DocenteAsignaturasPageModule)
+  },
   
 ];
 
