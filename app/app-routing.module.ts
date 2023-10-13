@@ -8,23 +8,27 @@ const routes: Routes = [
     redirectTo: 'inicio',
     pathMatch: 'full'
   },
+
   {
     path: 'inicio',
     loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
   },
+
   {
     path: 'card',
     loadChildren: () => import('./pages/card/card.module').then( m => m.CardPageModule)
   },
+
   {
     path: 'formulario',
     loadChildren: () => import('./pages/formulario/formulario.module').then( m => m.FormularioPageModule)
   },
-  
+
   {
     path: 'alumno',
     loadChildren: () => import('./pages/alumno/alumno.module').then( m => m.AlumnoPageModule)
   },
+
   {
     path: 'leerqr',
     loadChildren: () => import('./pages/leerqr/leerqr.module').then( m => m.LeerqrPageModule)
@@ -33,13 +37,14 @@ const routes: Routes = [
     path: 'docente',
     loadChildren: () => import('./pages/docente/docente.module').then( m => m.DocentePageModule)
   },
+
   {
     path: 'asignaturas',
     loadChildren: () => import('./pages/asignaturas/asignaturas.module').then( m => m.AsignaturasPageModule)
   },
   {
-    path: 'docente-asignaturas',
-    loadChildren: () => import('./pages/docente-asignaturas/docente-asignaturas.module').then( m => m.DocenteAsignaturasPageModule)
+    path: 'crear-asignatura',
+    loadChildren: () => import('./pages/crear-asignatura/crear-asignatura.module').then( m => m.CrearAsignaturaPageModule)
   },
   
 ];

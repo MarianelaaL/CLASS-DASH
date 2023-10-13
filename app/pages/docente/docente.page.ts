@@ -28,6 +28,9 @@ export class DocentePage implements OnInit {
   asignaturas(){
     this.navCtrl.navigateForward(['/asignaturas']);
   }
+  registrar(){
+    this.navCtrl.navigateForward(['/formulario']);
+  }
   
   async Enviar() {
     const alert = await this.alertController.create({

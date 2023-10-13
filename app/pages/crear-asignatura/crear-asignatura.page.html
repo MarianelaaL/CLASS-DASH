@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-row class="ion-align-items-start">
+      <ion-col>
+        <ion-title id="nombre">Crear Asignatura</ion-title>
+      </ion-col>
+      <ion-col>
+        <ion-img src="./assets/Logo_sin_fondo.png" id="logo"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="text-align:center;" >
+  <br><br><br><br><br><br>
+  <ion-card>
+    <ion-item>
+      <ion-label position="fixed">Sigla: </ion-label>
+      <ion-input type="text" [(ngModel)]="newDato.sigla" required></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="fixed">Nombre: </ion-label>
+      <ion-input type="text" [(ngModel)]="newDato.nomAsignatura" required></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="fixed">Area: </ion-label>
+      <ion-input type="text" [(ngModel)]="newDato.area" required></ion-input>
+    </ion-item>
+  
+    <ion-button (click)="addDatos()" expand="block"> Agregar asignatura </ion-button>
+    <ion-button (click)="goBack()" > Volver </ion-button>
+
+  </ion-card>
+    
+</ion-content>
