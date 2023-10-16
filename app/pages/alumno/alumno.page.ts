@@ -1,10 +1,9 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { MenuController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
-import { RegistroserviceService, Usuario } from "../../service/registroservice.service" ;
+import { RegistroserviceService, Usuario } from '../../../service/registroservice.service' ;
 import {
-  FormGruop,
+  FormGroup,
   FormControl,
   Validators,
   FormBuilder
@@ -16,12 +15,15 @@ import {
   templateUrl: './alumno.page.html',
   styleUrls: ['./alumno.page.scss'],
 })
+
 export class AlumnoPage implements OnInit {
 
   formularioLogin : FormGroup;
+  usuarios: Usuario[] = [];
 
   constructor(private alertController: AlertController,
               private navController: NavController,
+              private navCtrl: NavController,
               private registroService: RegistroserviceService,
               private fb: FormBuilder) {
                 this.formularioLogin = this.fb.group({
@@ -41,34 +43,28 @@ export class AlumnoPage implements OnInit {
   leerqr(){
     this.navCtrl.navigateForward(['/leerqr']);
   }
-  loadDatos(){
-    this.storageService.getDatos().then(datos=>{
-      this.datos=datos;
-    });
-  }
-
+  
   async Ingresar(){
     var f = this.formularioLogin.value;
     var a = 0;
-    this.serviceRegistro.getUsuarios().then(datos=>{
-      this.usuarios=datos:
-      if (datos.length==0)
-      {
+    this.registroService.getUsuarios().then (datos => { this.usuarios=datos;
+      if (datos.length==0){
         return null;
       }
 
       for (let obj of this.usuarios){
-        if(obj.correoUsuario == f.correo && obj.passUsuario==f.password){
+        if(obj.correoUsuario == f.correo && obj.passUsuario == f.password){
           a=1;
           console.log('ingresado');
           localStorage.setItem('ingresado', 'true');
           this.navController.navigateRoot('inicio');
         }
       }
-      console.log(a);
-      if (a==0){
-        this.alertMsg();
+    console.log(a);
+    if (a==0){
+      this.alertMsg();
       }
+    return a===1;
     });
   }
 
@@ -81,12 +77,5 @@ export class AlumnoPage implements OnInit {
     await alert.present();
     return;
   }
-
-  async Enviar() {
-    const alert = await this.alertController.create({
-      header: 'Bienvenido!',
-      message: `Hola , ${this.newDato.nombre}`,
-      buttons: ['OK'],
-    });
-  }
+  
 }

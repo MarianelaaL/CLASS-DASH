@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
-export interface Usuarios{
+export interface Usuario{
   nomUsuario: string;
   correoUsuario: string;
   passUsuario: string;
@@ -16,7 +16,7 @@ const USERS_KEY = 'my-usuarios';
 
 export class RegistroserviceService {
 
-  private _storage: Storage
+  private _storage : Storage | null = null;
   newUsuario: Usuario = <Usuario>{};
 
   constructor(private storage: Storage) {
@@ -29,7 +29,7 @@ export class RegistroserviceService {
   }
 
   async addDatos(dato: Usuario):Promise<any>{
-    return this.storage.get(USERS_KEY).then((datos : Usuarios[])=>{
+    return this.storage.get(USERS_KEY).then((datos : Usuario[])=>{
       if (datos) {
         datos.push(dato);
         return this.storage.set(USERS_KEY, datos);

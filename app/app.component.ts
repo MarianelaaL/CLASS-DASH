@@ -29,8 +29,10 @@ export class AppComponent {
       icon: 'attach-outline',
       redirecTo:'/formulario'   
     },
-     
+    
 
   ]
   constructor() {}
+  
+
 }

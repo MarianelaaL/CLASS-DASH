@@ -1,9 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="mostrarMenu()">
-        <ion-icon slot="icon-only" name="menu-outline" style="color: #8bbdcb;"></ion-icon>
-      </ion-button>
       <ion-col>
         <ion-img src="./assets/Logo_sin_fondo.png" id="logo"></ion-img>
       </ion-col>
@@ -24,7 +21,7 @@
       <ion-card-title>Registrate!</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-       <form [FormGroup] = "formularioRegistro" (keyup.enter)="CrearUsuario()">
+      <form [formGroup] = "formularioRegistro" (keyup.enter)="CrearUsuario()">
         <ion-list>
 
           <ion-item>
@@ -53,7 +50,7 @@
 
         <ion-button (click)="goBack()" > Volver </ion-button>
 
-       </form>
+      </form>
     </ion-card-content>
   </ion-card>
 

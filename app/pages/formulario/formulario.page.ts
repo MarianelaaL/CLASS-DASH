@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
-import { RegistroserviceService, Usuario } from '../../service/registroservice.service'; 
+import { NavController } from '@ionic/angular';
+import { RegistroserviceService, Usuario } from '../../../service/registroservice.service'; 
 import {
-  FormGruop,
+  FormGroup,
   FormControl,
   Validators,
   FormBuilder
@@ -16,20 +17,21 @@ import {
 })
 export class FormularioPage implements OnInit {
 
-  formularioLogin : FormGroup;
+  formularioRegistro : FormGroup;
   newUsuario: Usuario= <Usuario>{};
 
   constructor(private alertController: AlertController,
               private toastController: ToastController,
+              private  navCtrl: NavController,
               private registroService: RegistroserviceService,
               private fb:FormBuilder) {
                 this.formularioRegistro = this.fb.group({
-                  'nombre': new FormControl("", Validators.required)
+                  'nombre': new FormControl("", Validators.required),
                   'correo' : new FormControl("", Validators.required),
                   'password' : new FormControl("", Validators.required),
-                  'confirmaPass': new FormControl("", Validators.required)
+                  'confirmaPass': new FormControl("", Validators.required),
                 });
-        }
+              }
 
   ngOnInit() {
   }
@@ -38,7 +40,7 @@ export class FormularioPage implements OnInit {
   }
 
   async CrearUsuario(){
-    ver form= this.formularioRegistro.value;
+    var form= this.formularioRegistro.value;
     if (this.formularioRegistro.invalid){
       const alert = await this.alertController.create({
         header: 'Datos Incompletos',
@@ -49,15 +51,23 @@ export class FormularioPage implements OnInit {
       return;
     }
 
-    this.newUsuario = form.nombre,
-    this.newUsuario = form.correo,
-    this.newUsuario = form.password,
-    this.newUsuario = form.confirmaPass,
+    this.newUsuario.nomUsuario = form.nombre,
+    this.newUsuario.correoUsuario = form.correo,
+    this.newUsuario.passUsuario = form.password,
+    this.newUsuario.repassUsuario = form.confirmaPass,
     this.registroService.addDatos(this.newUsuario).then(dato => {
       this.newUsuario = <Usuario>{};
       this.showToast('!Datos Agregados');
     });
 
+  }
+
+  async showToast(msg: string){
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 2000
+    });
+    toast.present();
   }
 
 
