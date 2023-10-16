@@ -14,9 +14,6 @@ export class InicioPage implements OnInit {
 
   ngOnInit() {
   }
-  docente(){
-    this.navCtrl.navigateForward(['/docente'])
-  }
   alumno(){
     this.navCtrl.navigateForward(['/alumno'])
   }

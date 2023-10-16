@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { IngresadoGuard } from './ingresado.guard';
+import { NoIngresadoGuard } from './no-ingresado.guard';
 
 const routes: Routes = [
   
@@ -11,42 +13,34 @@ const routes: Routes = [
 
   {
     path: 'inicio',
-    loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
+    loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule),
+    canActivate: [IngresadoGuard]
   },
 
   {
     path: 'card',
-    loadChildren: () => import('./pages/card/card.module').then( m => m.CardPageModule)
+    loadChildren: () => import('./pages/card/card.module').then( m => m.CardPageModule),
+    canActivate: [IngresadoGuard]
   },
 
   {
     path: 'formulario',
-    loadChildren: () => import('./pages/formulario/formulario.module').then( m => m.FormularioPageModule)
+    loadChildren: () => import('./pages/formulario/formulario.module').then( m => m.FormularioPageModule),
+    canActivate: [NoIngresadoGuard]
   },
 
   {
     path: 'alumno',
-    loadChildren: () => import('./pages/alumno/alumno.module').then( m => m.AlumnoPageModule)
+    loadChildren: () => import('./pages/alumno/alumno.module').then( m => m.AlumnoPageModule),
+    canActivate: [NoIngresadoGuard]
   },
 
   {
     path: 'leerqr',
-    loadChildren: () => import('./pages/leerqr/leerqr.module').then( m => m.LeerqrPageModule)
-  },
-  {
-    path: 'docente',
-    loadChildren: () => import('./pages/docente/docente.module').then( m => m.DocentePageModule)
+    loadChildren: () => import('./pages/leerqr/leerqr.module').then( m => m.LeerqrPageModule),
+    canActivate: [NoIngresadoGuard]
   },
 
-  {
-    path: 'asignaturas',
-    loadChildren: () => import('./pages/asignaturas/asignaturas.module').then( m => m.AsignaturasPageModule)
-  },
-  {
-    path: 'crear-asignatura',
-    loadChildren: () => import('./pages/crear-asignatura/crear-asignatura.module').then( m => m.CrearAsignaturaPageModule)
-  },
-  
 ];
 
 @NgModule({

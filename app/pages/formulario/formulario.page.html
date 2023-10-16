@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="mostrarMenu()">
-        <ion-icon slot="start" name="menu-outline" color="warning"></ion-icon>
+        <ion-icon slot="icon-only" name="menu-outline" style="color: #8bbdcb;"></ion-icon>
       </ion-button>
       <ion-col>
         <ion-img src="./assets/Logo_sin_fondo.png" id="logo"></ion-img>
@@ -24,24 +24,32 @@
       <ion-card-title>Registrate!</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-       <form>
+       <form [FormGroup] = "formularioRegistro" (keyup.enter)="CrearUsuario()">
         <ion-list>
+
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input type="text" placeholder="Juanito..." formController="nombre"></ion-input>
+          </ion-item>
   
           <ion-item>
-            <ion-label position="floating">Email de Usuario</ion-label>
-            <ion-input type="email" placeholder="Harry@duoc.cl" name="email"
-                      [(ngModel)]="persona.email"></ion-input>
+            <ion-label position="floating">Email </ion-label>
+            <ion-input type="taxt" placeholder="Harry@duoc.cl" formController="correo" ></ion-input>
           </ion-item>
-
 
           <ion-item>
-            <ion-label position="floating">Password de Usuario</ion-label>
-            <ion-input type="password" placeholder="Hakuna Matata" name="password"
-                      [(ngModel)]="persona.password"></ion-input>
+            <ion-label position="floating">Password </ion-label>
+            <ion-input type="password" placeholder="Hakuna Matata" formController="password"></ion-input>
           </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Confirma Password</ion-label>
+            <ion-input type="password" placeholder="Hakuna Matata" formController="confirmPass"></ion-input>
+          </ion-item>
+
         </ion-list>
         
-        <ion-button (click)="Enviar()" expand="block" fill="solid" color="warning" shape="round"> Enviar </ion-button>
+        <ion-button (click)="CrearUsuario()" expand="block" fill="solid" color="warning" shape="round" routerLink="/alumno"> Enviar </ion-button>
 
         <ion-button (click)="goBack()" > Volver </ion-button>
 

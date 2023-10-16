@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Storage }  from '@ionic/storage';
 
-export interface Asignaturas{
-  sigla : number;
-  nomAsignatura: string;
-  area : string;  
+export interface Alumnos{
+  rut : number;
+  nombre: string;
+  email: string;
+  password : string;  
 }
 
 const ITEMS_KEY = 'my-datos';
@@ -25,8 +26,8 @@ export class ServicesdatosService {
     this._storage= storage;
   }
 
-  async addDatos(dato: Asignaturas):Promise<any>{
-    return this.storage.get(ITEMS_KEY).then((datos : Asignaturas[])=>{
+  async addDatos(dato: Alumnos):Promise<any>{
+    return this.storage.get(ITEMS_KEY).then((datos : Alumnos[])=>{
        if (datos) {
          datos.push(dato);
          return this.storage.set(ITEMS_KEY, datos);
@@ -40,20 +41,20 @@ export class ServicesdatosService {
     //Nos permmite obtener la información almacenada en el storage
     //por medio de sus keys
  
-   async getDatos(): Promise<Asignaturas[]>{
+   async getDatos(): Promise<Alumnos[]>{
      return this.storage.get(ITEMS_KEY);
    }
  
  
    //actualizar información de un objeto
-   async updateDatos(dato: Asignaturas): Promise<any>{
-     return this.storage.get(ITEMS_KEY).then((datos : Asignaturas[])=>{
+   async updateDatos(dato: Alumnos): Promise<any>{
+     return this.storage.get(ITEMS_KEY).then((datos : Alumnos[])=>{
        if (!datos || datos.length == 0){
          return null;
        }
-       let newDato: Asignaturas[] = [];
+       let newDato: Alumnos[] = [];
        for (let i of datos){
-         if (i.sigla === dato.sigla){
+         if (i.rut === dato.rut){
            newDato.push(dato);
          }
          else{
@@ -64,15 +65,15 @@ export class ServicesdatosService {
      });
    }
  
-    //Eliminar
-  async deleteDatos(sigla: number): Promise<Asignaturas>{
-     return this.storage.get(ITEMS_KEY).then((datos : Asignaturas[])=>{
+  //Eliminar
+  async deleteDatos(rut: number): Promise<Alumnos>{
+     return this.storage.get(ITEMS_KEY).then((datos : Alumnos[])=>{
        if (!datos || datos.length === 0){
          return null;
        }
-       let toKeep: Asignaturas[] = [];
+       let toKeep: Alumnos[] = [];
        for (let i of datos){
-         if (i.sigla !== sigla){
+         if (i.rut !== rut){
            toKeep.push(i);
          }
        }
