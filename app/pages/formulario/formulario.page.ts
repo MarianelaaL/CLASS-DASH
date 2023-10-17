@@ -51,9 +51,9 @@ export class FormularioPage implements OnInit {
       return;
     }
 
-    this.newUsuario.nomUsuario = form.nombre,
-    this.newUsuario.correoUsuario = form.correo,
-    this.newUsuario.passUsuario = form.password,
+    this.newUsuario.nomUsuario = form.nomUsuario,
+    this.newUsuario.correoUsuario = form.correoUsuario,
+    this.newUsuario.passUsuario = form.passUsuario,
     this.newUsuario.repassUsuario = form.confirmaPass,
     this.registroService.addDatos(this.newUsuario).then(dato => {
       this.newUsuario = <Usuario>{};
@@ -68,15 +68,6 @@ export class FormularioPage implements OnInit {
       duration: 2000
     });
     toast.present();
-  }
-
-
-  async Enviar() {
-    const alert = await this.alertController.create({
-      header: 'Gracias!',
-      message: 'Sus datos han sido almacenados!',
-      buttons: ['OK'],
-    });
   }
 
 }

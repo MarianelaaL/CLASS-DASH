@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     path: 'inicio',
     loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule),
-    canActivate: [IngresadoGuard]
+    
   },
 
   {
@@ -38,7 +38,7 @@ const routes: Routes = [
   {
     path: 'leerqr',
     loadChildren: () => import('./pages/leerqr/leerqr.module').then( m => m.LeerqrPageModule),
-    canActivate: [NoIngresadoGuard]
+    canActivate: [IngresadoGuard]
   },
 
 ];

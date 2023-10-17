@@ -57,14 +57,14 @@ export class AlumnoPage implements OnInit {
           a=1;
           console.log('ingresado');
           localStorage.setItem('ingresado', 'true');
-          this.navController.navigateRoot('inicio');
+          this.navController.navigateRoot('leerqr');
         }
       }
     console.log(a);
     if (a==0){
       this.alertMsg();
       }
-    return a===1;
+    return a===0;
     });
   }
 

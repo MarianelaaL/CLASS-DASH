@@ -25,25 +25,30 @@
 
           <ion-item>
             <ion-label position="floating"> Email </ion-label>
-            <ion-input formControlName="correo" placeholder="Alumno@duocuc.cl" name="email" helperText="Ingrese un Email Valido"></ion-input>
+            <ion-input formControlName="correo" placeholder="Alumno@duocuc.cl" helperText="Ingrese un Email Valido"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label position="floating" >Contraseña </ion-label>
-            <ion-input formControlName="password" type="password" placeholder="L15615646-8" name="password" helperText="Ingrese Contraseña"></ion-input>
+            <ion-input formControlName="password" type="password" placeholder="L15615646-8" helperText="Ingrese Contraseña"></ion-input>
           </ion-item>
 
         </ion-list>
         </form>
         
         <br>
-        <ion-button  color="secondary" size="small" (click)="leerqr()">Iniciar sesion </ion-button> 
-        <br><br>
+        <ion-button  color="secondary" size="medium" (click)="Ingresar()">Iniciar sesion </ion-button> 
+        <ion-button size="medium" [routerLink]="['/formulario']"> Registrarse </ion-button>
+        
+        <br>
         <ion-button size="medium" (click)="goBack()" > Volver </ion-button>
 
     </ion-card-content>
   </ion-card>
 </ion-content>
+
+ 
+
 
 
 
