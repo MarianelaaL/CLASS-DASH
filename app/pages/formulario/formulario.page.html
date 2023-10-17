@@ -5,6 +5,7 @@
         <ion-img src="./assets/Logo_sin_fondo.png" id="logo"></ion-img>
       </ion-col>
     </ion-buttons>
+    <ion-title id="nombre">Class-Dash</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,6 +17,9 @@
   </ion-header>
 
   <ion-card>
+    <ion-card-header>
+      <ion-card-title>Registrate!</ion-card-title>
+    </ion-card-header>
     <ion-card-content>
       <form [formGroup] = "formularioRegistro" (keyup.enter)="CrearUsuario()">
         <ion-list>
@@ -27,7 +31,7 @@
   
           <ion-item>
             <ion-label position="floating">Email </ion-label>
-            <ion-input type="email" placeholder="Harry@duoc.cl" formControlName="correo" ></ion-input>
+            <ion-input type="Email" placeholder="Harry@duoc.cl" formControlName="correo" ></ion-input>
           </ion-item>
 
           <ion-item>
@@ -37,7 +41,7 @@
 
           <ion-item>
             <ion-label position="floating">Confirma Password</ion-label>
-            <ion-input type="password" placeholder="Hakuna Matata" formControlName="confirmPass"></ion-input>
+            <ion-input type="password" placeholder="Hakuna Matata" formControlName="confirmaPass"></ion-input>
           </ion-item>
 
         </ion-list>

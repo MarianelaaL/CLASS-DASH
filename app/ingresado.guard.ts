@@ -8,7 +8,9 @@ import { NavController } from '@ionic/angular';
 })
 export class IngresadoGuard implements CanActivate {
 
-  constructor(private navController: NavController) {}
+  constructor(private navController: NavController) {
+
+  }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

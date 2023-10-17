@@ -39,28 +39,28 @@ export class FormularioPage implements OnInit {
     this.navCtrl.navigateBack(['/']);
   }
 
-  async CrearUsuario(){
+  async CrearUsuario() {
     var form= this.formularioRegistro.value;
     if (this.formularioRegistro.invalid){
       const alert = await this.alertController.create({
-        header: 'Datos Incompletos',
+        header: 'Datos incompletos',
         message: 'Debe completar todos los datos',
-        buttons: ['Aceptar'],
+        buttons: ['Aceptar']
       });
       await alert.present();
       return;
     }
-
-    this.newUsuario.nomUsuario = form.nomUsuario,
-    this.newUsuario.correoUsuario = form.correoUsuario,
-    this.newUsuario.passUsuario = form.passUsuario,
-    this.newUsuario.repassUsuario = form.confirmaPass,
+  
+    this.newUsuario.nomUsuario = form.nombre,
+    this.newUsuario.correoUsuario = form.correo,
+    this.newUsuario.passUsuario=form.password,
+    this.newUsuario.repassUsuario=form.confirmaPass
     this.registroService.addDatos(this.newUsuario).then(dato => {
       this.newUsuario = <Usuario>{};
       this.showToast('!Datos Agregados');
     });
-
   }
+  
 
   async showToast(msg: string){
     const toast = await this.toastController.create({
@@ -68,6 +68,15 @@ export class FormularioPage implements OnInit {
       duration: 2000
     });
     toast.present();
+  }
+
+
+  async Enviar() {
+    const alert = await this.alertController.create({
+      header: 'Gracias!',
+      message: 'Sus datos han sido almacenados!',
+      buttons: ['OK'],
+    });
   }
 
 }

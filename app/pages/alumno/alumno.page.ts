@@ -8,6 +8,7 @@ import {
   Validators,
   FormBuilder
 } from "@angular/forms";
+import {FormularioPage } from '../formulario/formulario.page';
 
 
 @Component({
@@ -51,7 +52,6 @@ export class AlumnoPage implements OnInit {
       if (datos.length==0){
         return null;
       }
-
       for (let obj of this.usuarios){
         if(obj.correoUsuario == f.correo && obj.passUsuario == f.password){
           a=1;
@@ -76,6 +76,12 @@ export class AlumnoPage implements OnInit {
     });
     await alert.present();
     return;
+  }
+
+  cerrarSesion() {
+    // Elimina las credenciales (o información de sesión) y redirige a la página de inicio de sesión
+    localStorage.removeItem('ingresado');
+    this.navController.navigateRoot('inicio'); // Ajusta la ruta a tu página de inicio de sesión
   }
   
 }

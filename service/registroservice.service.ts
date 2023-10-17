@@ -16,10 +16,11 @@ const USERS_KEY = 'my-usuarios';
 
 export class RegistroserviceService {
 
-  private _storage : Storage | null = null;
+  private _storage : Storage
   newUsuario: Usuario = <Usuario>{};
 
   constructor(private storage: Storage) {
+    this._storage = storage;
     this.init();
    }
 
